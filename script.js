@@ -17,8 +17,6 @@ let Graph=[
         }
      }
  }
- console.log(MatrixDistantion);
-
  let arrX=[],arrY=[];
  let compareFunction=(a,b,i)=>{
      return MatrixDistantion[i][a]-MatrixDistantion[i][b]
@@ -30,13 +28,13 @@ let Graph=[
          if (Graph[x][y]!=Infinity) {
              for (let k = 0; k < Graph.length; k++) {
                  if (k !== x && k !== y) {
-                     arrX.push(k); //MatrixDistantion[x][k] кидать вершину или значение?
+                     arrX.push(k);
                  }
              }
              arrX.sort((a, b) => {
                  return MatrixDistantion[x][a] - MatrixDistantion[x][b]
              });
-             console.log(x+1, y+1, arrX);
+
              while (arrX.length>1){
                  //arrY=arrY.concat(arrX.slice(-1))
                  arrY.push(arrX.pop());
@@ -44,12 +42,11 @@ let Graph=[
                  arrY.sort((a, b) => {
                      return MatrixDistantion[y][a] - MatrixDistantion[y][b]
                  });
-                 console.log("arrX",arrX);
-                 console.log("arrY",arrY);
-                 //console.log(MatrixDistantion[arrX[arrX.length-1]][arrY[arrY.length-1]]);
-                 // if (MatrixDistantion[arrX[arrX.length-1]][arrY[arrY.length-1]]/2 < absRadius){
-                 if ((MatrixDistantion[x][arrX[arrX.length-1]]+MatrixDistantion[y][arrY[arrY.length-1]]+MatrixDistantion[x][y])/2 < absRadius){
-                     if(x==2 && y==6) console.log("Здесь",arrX[arrX.length-1],arrY[arrY.length-1],(MatrixDistantion[x][arrX[arrX.length-1]]+MatrixDistantion[y][arrY[arrY.length-1]]+MatrixDistantion[x][y])/2,absRadius);
+                 if ((MatrixDistantion[x][arrX[arrX.length-1]]+MatrixDistantion[y][arrY[arrY.length-1]]+MatrixDistantion[x][y])/2 < absRadius
+                     &&MatrixDistantion[x][arrX[arrX.length-1]]+MatrixDistantion[y][arrY[arrY.length-1]]>MatrixDistantion[x][y]
+                     &&MatrixDistantion[x][arrX[arrX.length-1]]+MatrixDistantion[x][y]>MatrixDistantion[y][arrY[arrY.length-1]]
+                     &&MatrixDistantion[y][arrY[arrY.length-1]] +MatrixDistantion[x][y]>MatrixDistantion[x][arrX[arrX.length-1]]){
+                    
                      absRadius=(MatrixDistantion[x][arrX[arrX.length-1]]+MatrixDistantion[y][arrY[arrY.length-1]]+MatrixDistantion[x][y])/2;
                      vertexA=x;
                      vertexB=y;
@@ -57,7 +54,6 @@ let Graph=[
                      perefVertexB=arrY[arrY.length-1];
                  }
              }
-
              arrX.length=0;
              arrY.length = 0;
          }
