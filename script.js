@@ -60,3 +60,4 @@ let Graph=[
      }
  }
  console.log(absRadius,vertexA,vertexB,perefVertexA,perefVertexB);
+console.log(`Абсолютный центр находится между ${vertexA+1} и ${vertexB+1} вершинами на удалении от вершины ${vertexA+1} на ${absRadius-MatrixDistantion[vertexA][perefVertexA]} `);
