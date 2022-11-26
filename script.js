@@ -18,9 +18,6 @@ let Graph=[
      }
  }
  let arrX=[],arrY=[];
- let compareFunction=(a,b,i)=>{
-     return MatrixDistantion[i][a]-MatrixDistantion[i][b]
- };
  let absRadius=Infinity;
  let vertexA,vertexB, perefVertexA, perefVertexB;
  for (let x  = 0; x<Graph.length-1; x++){
@@ -36,9 +33,7 @@ let Graph=[
              });
 
              while (arrX.length>1){
-                 //arrY=arrY.concat(arrX.slice(-1))
                  arrY.push(arrX.pop());
-                 //arrX.length=arrX.length-1;
                  arrY.sort((a, b) => {
                      return MatrixDistantion[y][a] - MatrixDistantion[y][b]
                  });
